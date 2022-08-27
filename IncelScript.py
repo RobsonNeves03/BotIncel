@@ -1,10 +1,9 @@
 import discord
 from mcstatus import *
 from discord.ext import commands,tasks
-import youtube_dl
 
 
-client = discord.Client()
+client = discord.Client(intents=discord.Intents.default())
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -38,11 +37,6 @@ async def on_message(message):
         else:
             await message.channel.send('Server: Offline') #Retorna a mensagem
     #FIM MINECRAFT
-
-    #COMEÇO MÚSICA
-    if message.content.startswith('&play'):
-        await message.channel.send('Uhul música')
-    #FIM MÚSICA
 
     if message.content.startswith('&help'):
         await message.channel.send('**&server** - Exibe o status do servidor\n**&ping** - Exibe o ping do servidor\n**&players** - Exibe a quantidade de players do servidor')
