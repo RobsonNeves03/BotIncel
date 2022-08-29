@@ -3,16 +3,13 @@ from mcstatus import *
 from discord.ext import commands,tasks
 
 
-client = discord.Client(intents=discord.Intents.default())
+client = discord.Client(intents=discord.Intents.all())
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
-        return
-
     #COMEÇO MINECRAFT
     #Retorna o ping de um servidor
     if message.content.startswith('&ping'):
@@ -40,5 +37,5 @@ async def on_message(message):
 
     if message.content.startswith('&help'):
         await message.channel.send('**&server** - Exibe o status do servidor\n**&ping** - Exibe o ping do servidor\n**&players** - Exibe a quantidade de players do servidor')
-
+    
 client.run('')
